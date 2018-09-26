@@ -114,7 +114,7 @@ $(listElm).find('tr:has(span[class="expand"])').each(
       }
 
       $(listElm.rows[i]).find('TH').hide();
-      $(listElm.rows[i]).find('TD').hide();
+      //$(listElm.rows[i]).find('TD').hide();
     }
 
 
