@@ -88,29 +88,29 @@ $(listElm).find('tr:has(span[class="expand"])').each(
       , lpad = parseInt($($(this).find('th:has(span[class="expand"])')[0]).css('padding-left'))
       , itr=0;
       ;
-	  console.log('Left padding:' + lpad + 'PC');
+	  console.log('Left padding:' + lpad + 'PC1');
 
 
     if(r+1==a) $(this).find('span[class="expand"]').remove();
     for (var i=r+1;i<a;++i){
       var id = $(this).find('th:has(span[class="expand"])')[0].id
-        , td = $(listElm.rows[i]).find('TD')
+        , td = $(listElm.rows[i]).find('TH')
 
 
-      if(parseInt($(th[0]).css('padding-left'))<=lpad) {
+      if(parseInt($(td[0]).css('padding-left'))<=lpad) {
         if(itr==0) $(this).find('span[class="expand"]').remove();
         i=a;
       }
       else {
         ++itr;
-        $(th).attr(
+        $(td).attr(
             'parent'
           , function(){
           return $(this).attr('parent')? $(this).attr('parent')+id+'|': id+'|'
         }
       );
       }
-      $(listElm.rows[i]).find('TD').hide();
+      $(listElm.rows[i]).find('TH').hide();
     }
 
 
@@ -124,23 +124,23 @@ $(listElm).find('tr:has(span[class="expand"])').each(
 $(listElm).find('span[class="expand"]').text('+ ');
 
 var tds = $(listElm).find('th:has(span[class="expand"])');
-ths.css( 'cursor', 'pointer' );
-ths.attr( 'state', 'expand' );
+tds.css( 'cursor', 'pointer' );
+tds.attr( 'state', 'expand' );
 
 $(listElm).find('th:has(span[class="expand"])').click(function(){
   var p = $(this).attr('parent')?$(this).attr('parent'):'';
 
   if($(this).attr('state')=='expand'){
-    $(listElm).find('TD[parent="'+p+this.id+'|"]').show(200);
+    $(listElm).find('TH[parent="'+p+this.id+'|"]').show(200);
     $(this).attr('state','collapse');
     $(this).find('span[class="expand"]').text('- ');
   }
   else {
 
-    $(listElm).find('TD[parent*="'+this.id+'|"]').hide(200);
-    $(listElm).find('TD[parent*="'+this.id+'|"]:has(span[class="expand"])').attr('state','expand');
+    $(listElm).find('TH[parent*="'+this.id+'|"]').hide(200);
+    $(listElm).find('TH[parent*="'+this.id+'|"]:has(span[class="expand"])').attr('state','expand');
     $(this).find('span[class="expand"]').text('+ ');
-    $($(listElm).find('TD[parent*="'+this.id+'|"]:has(span[class="expand"])')).find('span[class="expand"]').text('+ ');
+    $($(listElm).find('TH[parent*="'+this.id+'|"]:has(span[class="expand"])')).find('span[class="expand"]').text('+ ');
 
     $(this).attr('state','expand');
 
