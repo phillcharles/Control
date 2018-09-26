@@ -95,7 +95,7 @@ $(listElm).find('tr:has(span[class="expand"])').each(
     if(r+1==a) $(this).find('span[class="expand"]').remove();
     for (var i=r+1;i<a;++i){
       var id = $(this).find('th:has(span[class="expand"])')[0].id
-        , td = $(listElm.rows[i]).find('TH, TD')
+        , td = $(listElm.rows[i]).find('TH, TD');
 		console.log('TD Element');
 		console.log(td);
 
@@ -116,7 +116,7 @@ $(listElm).find('tr:has(span[class="expand"])').each(
       }
 
       $(listElm.rows[i]).find('TH').hide();
-      //$(listElm.rows[i]).find('TD').hide();
+      $(listElm.rows[i]).find('TD').hide();
     }
 
 
@@ -147,7 +147,7 @@ $(listElm).find('th:has(span[class="expand"])').click(function(){
     $(listElm).find('TD[parent*="'+this.id+'|"]').hide(200);
     $(listElm).find('TH[parent*="'+this.id+'|"]').hide(200);
     $(listElm).find('TD[parent*="'+this.id+'|"]:has(span[class="expand"])').attr('state','expand');
-    $(listElm.rows[i]).find('TD').show();
+    //$(listElm.rows[i]).find('TD').show();
     $(listElm).find('TH[parent*="'+this.id+'|"]:has(span[class="expand"])').attr('state','expand');
     $(this).find('span[class="expand"]').text('+ ');
 
