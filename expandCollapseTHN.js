@@ -88,7 +88,7 @@ $(listElm).find('tr:has(span[class="expand"])').each(
       , lpad = parseInt($($(this).find('th:has(span[class="expand"])')[0]).css('padding-left'))
       , itr=0;
       ;
-	  console.log('Left padding:' + lpad + 'PC3');
+	  console.log('Left padding:' + lpad + 'PC0');
 
 
     if(r+1==a) $(this).find('span[class="expand"]').remove();
@@ -109,7 +109,7 @@ $(listElm).find('tr:has(span[class="expand"])').each(
           return $(this).attr('parent')? $(this).attr('parent')+id+'|': id+'|'
         }
       );
-      $(listElm.rows[i]).find('TD').show();
+
       }
       $(listElm.rows[i]).find('TD').hide();
 
@@ -133,16 +133,16 @@ $(listElm).find('th:has(span[class="expand"])').click(function(){
   var p = $(this).attr('parent')?$(this).attr('parent'):'';
 
   if($(this).attr('state')=='expand'){
-    $(listElm).find('TH[parent="'+p+this.id+'|"]').show(200);
+    $(listElm).find('TD[parent="'+p+this.id+'|"]').show(200);
     $(this).attr('state','collapse');
     $(this).find('span[class="expand"]').text('- ');
   }
   else {
 
-    $(listElm).find('TH[parent*="'+this.id+'|"]').hide(200);
-    $(listElm).find('TH[parent*="'+this.id+'|"]:has(span[class="expand"])').attr('state','expand');
+    $(listElm).find('TD[parent*="'+this.id+'|"]').hide(200);
+    $(listElm).find('TD[parent*="'+this.id+'|"]:has(span[class="expand"])').attr('state','expand');
     $(this).find('span[class="expand"]').text('+ ');
-    $($(listElm).find('TH[parent*="'+this.id+'|"]:has(span[class="expand"])')).find('span[class="expand"]').text('+ ');
+    $($(listElm).find('TD[parent*="'+this.id+'|"]:has(span[class="expand"])')).find('span[class="expand"]').text('+ ');
 
     $(this).attr('state','expand');
 
