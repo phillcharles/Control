@@ -96,6 +96,8 @@ $(listElm).find('tr:has(span[class="expand"])').each(
     for (var i=r+1;i<a;++i){
       var id = $(this).find('th:has(span[class="expand"])')[0].id
         , td = $(listElm.rows[i]).find('TH, TD')
+		console.log('TD Element');
+		console.log(td);
 
 
       if(parseInt($(td[0]).css('padding-left'))<=lpad) {
